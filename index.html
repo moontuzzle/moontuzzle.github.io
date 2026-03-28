@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>七幕蒙太奇 · 秘密</title>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            text-align: center;
+            padding: 2rem;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            border: 1px solid #333;
+            padding: 2rem;
+            background: #111;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        h1 {
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            border-bottom: 1px solid #333;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        input {
+            background: #222;
+            border: 1px solid #444;
+            color: #eee;
+            padding: 0.6rem 1rem;
+            font-size: 1rem;
+            margin-top: 1.5rem;
+            width: 80%;
+            font-family: monospace;
+            text-align: center;
+        }
+        button {
+            background: #2a2a2a;
+            border: 1px solid #666;
+            color: #ddd;
+            padding: 0.6rem 1.5rem;
+            margin-top: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+        button:hover {
+            background: #3a3a3a;
+            border-color: #888;
+        }
+        .hidden {
+            display: none;
+        }
+        #secret {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
+            font-style: italic;
+            line-height: 1.6;
+        }
+        .error {
+            color: #a66;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        footer {
+            margin-top: 2rem;
+            font-size: 0.7rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>七幕蒙太奇</h1>
+    <p>七个字母，七个瞬间。<br>你已找到答案？</p>
+    <input type="text" id="codeInput" placeholder="输入字母序列" autocomplete="off">
+    <br>
+    <button onclick="checkCode()">开启</button>
+    <div id="errorMsg" class="error"></div>
+    <div id="secret" class="hidden">
+        <!-- 这里放你的隐藏惊喜内容，可以随时修改 -->
+        <p>恭喜你，拼凑出这份蒙太奇的人。</p>
+         <p>——Elio</p>
+        <!-- 你可以加图片：<img src="你的图片.jpg" style="max-width:100%; margin-top:1rem;"> -->
+    </div>
+    <footer>梦境并非虚幻，遗忘只是另一种记得。</footer>
+</div>
+
+<script>
+    // 正确答案（七个字母组成的单词，小写）
+    const CORRECT_CODE = "vigilia";  // 请替换成你设计的七个字母单词
+
+    function checkCode() {
+        const input = document.getElementById('codeInput').value.trim().toLowerCase();
+        const errorDiv = document.getElementById('errorMsg');
+        const secretDiv = document.getElementById('secret');
+
+        if (input === CORRECT_CODE) {
+            errorDiv.innerHTML = "";
+            secretDiv.classList.remove('hidden');
+            document.getElementById('codeInput').disabled = true;
+        } else {
+            errorDiv.innerHTML = "那并不是正确的顺序，再试试？";
+            secretDiv.classList.add('hidden');
+        }
+    }
+</script>
+</body>
+</html>
